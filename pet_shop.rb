@@ -26,11 +26,20 @@ end
 
 def pets_by_breed(shop, breed_query)
   breed_match = []
-  for pet in shop[:pets]
-    if breed_query == pet[:breed]
-      breed_match.push(pet)
+  for pets in shop[:pets]
+    if breed_query == pets[:breed]
+      breed_match.push(pets)
     end
   end
   return breed_match
+end
+
+def find_pet_by_name(shop, name_query)
+ for pet in shop[:pets]
+  if name_query == pet[:name]
+    return pet
+  end
+ end
+ return nil
 end
 
