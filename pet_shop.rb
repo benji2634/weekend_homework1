@@ -4,8 +4,8 @@ def pet_shop_name(shop)
   return shop [:name]
 end
 
-def total_cash(total)
-  return total[:admin][:total_cash]
+def total_cash(shop)
+  return shop[:admin][:total_cash]
 end
 
 def add_or_remove_cash(shop, transaction)
@@ -55,8 +55,8 @@ def add_pet_to_stock(shop, new_pet)
   return shop[:pets].length
 end
 
-def customer_pet_count(customers)
-  return customers[:pets].length
+def customer_pet_count(customer)
+  return customer[:pets].length
 end
 
 def add_pet_to_customer(customer, new_pet)
@@ -71,3 +71,10 @@ def customer_can_afford_pet(customer, new_pet)
   end
 end
 
+def sell_pet_to_customer(shop, pet, customer)
+  if customer_can_afford_pet(customer, pet)
+    add_pet_to_customer(customer, pet)
+    increase_pets_sold(shop, 1)
+    add_or_remove_cash(shop, pet[:price])
+  end
+end
