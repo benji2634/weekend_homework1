@@ -12,16 +12,16 @@ def add_or_remove_cash(shop, transaction)
   return shop[:admin][:total_cash] += transaction
 end
 
-def pets_sold(sold)
-  return sold[:admin][:pets_sold]
+def pets_sold(shop)
+  return shop[:admin][:pets_sold]
 end
 
 def increase_pets_sold(pets, add_pets)
   return pets[:admin][:pets_sold] += add_pets
 end
 
-def stock_count(stock)
-  return stock[:pets].length
+def stock_count(shop)
+  return shop[:pets].length
 end
 
 def pets_by_breed(shop, breed_query)
@@ -49,3 +49,10 @@ def remove_pet_by_name(shop, name_query)
     shop[:pets].delete(pet) if pet[:name] == name_query
   end
 end
+
+def add_pet_to_stock(shop, new_pet)
+  shop[:pets] << new_pet
+  return shop[:pets].length
+end
+
+
