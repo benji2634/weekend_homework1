@@ -43,3 +43,9 @@ def find_pet_by_name(shop, name_query)
  return nil
 end
 
+def remove_pet_by_name(shop, name_query)
+  # binding.pry
+  for pet in shop[:pets]
+    shop[:pets].delete(pet) if pet[:name] == name_query
+  end
+end
